@@ -1,0 +1,39 @@
+<ion-header color="#e7c450 ">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button fill="clear " defaultHref="/menu"></ion-back-button>
+        </ion-buttons>
+        <h2 class="div-letra" align-center>                Órdenes</h2>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="ion-text-center">
+        <ion-grid>
+            <ion-list>
+                <ion-row>
+                    <ion-item *ngFor="let colecciones of productos">
+                        <ion-item>
+                            <p>{{colecciones.uid}}</p>
+                        </ion-item>
+                        <ion-col> <img src="{{colecciones.imagen}}" item-left class="imagen">
+                        </ion-col>
+                        <ion-col>
+                            <p>Ingrediente: {{colecciones.ingrediente}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <p>Costo: $ x</p>
+                        </ion-col>
+                    </ion-item>
+                </ion-row>
+            </ion-list>
+        </ion-grid>
+        <ion-col>
+            <ion-button color="danger" shape="round"> Eliminar</ion-button>
+            <ion-button color="warning" shape="round" (click)="getOrdenes()">Pagar</ion-button>
+        </ion-col>
+    </ion-card>
+
+
+</ion-content>

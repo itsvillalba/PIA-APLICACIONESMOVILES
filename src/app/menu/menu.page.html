@@ -1,0 +1,69 @@
+<ion-header [translucent]="false" class="ion-no-border">
+
+
+    <ion-toolbar>
+
+
+
+        <div class="ion-text-center">
+            <ion-text color="warning">
+                <ion-img text-center src="assets/img/logo.png" style="height: 60px "></ion-img>
+            </ion-text>
+        </div>
+
+        <ion-toolbar>
+
+            <ion-buttons slot="start">
+                <ion-menu-button>
+                    <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+                </ion-menu-button>
+            </ion-buttons>
+
+            <ion-searchbar showCancelButton="never" placeholder="Encuentre su comida favorita..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+        </ion-toolbar>
+
+    </ion-toolbar>
+
+
+
+
+</ion-header>
+
+<ion-content [fullscreen]="true " class="content-color">
+
+
+
+    <ion-card>
+        <ion-list>
+            <ion-item *ngFor="let negocio of negocios | filter:filterTerm" [routerLink]="['/detallemenu', negocio.id]" routerLinkActive="active" detail>
+
+                <ion-card-header>
+                    <ion-row justify-content-between>
+                        <ion-col col-auto>
+                            <img src="{{negocio.imagen}}" item-left class="imagen">
+                        </ion-col>
+                        <ion-col>
+                            <ion-row text-wrap>
+                                <h2 class="div-letra">{{negocio.nombre}}</h2>
+                                <p class="div-letra-2">{{negocio.descripcion}}</p>
+                            </ion-row>
+
+                            <ion-row class="buttons">
+                                <ion-col>
+                                    {{negocio.precio}}
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+
+
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,74 @@
+        .edits {
+            border-radius: 7px !important;
+            overflow: hidden;
+        }
+        
+        .alineacion-header {
+            justify-content: center;
+        }
+        
+        ion-card {
+            display: flex;
+            flex-direction: column;
+            width: 105% !important;
+            margin: 0 !important;
+            border-radius: 20px !important;
+        }
+        
+        ion-card-content {
+            outline: none !important;
+        }
+        
+        .center {
+            display: block;
+            margin: auto;
+            width: 50%;
+        }
+        
+        ion-img {
+            border-radius: 300px !important;
+            overflow: hidden;
+            align-items: center;
+        }
+        
+        ion-toolbar {
+            --min-height: 10px!important;
+            border-radius: 5px !important;
+        }
+        
+        ion-card-title {
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            font-variant: small-caps;
+            font-family: Arial, Helvetica, sans-serif;
+            font-variant: small-caps;
+        }
+        
+        .imagen {
+            border-radius: 8px !important;
+            overflow: hidden;
+        }
+        
+        .div-letra {
+            font-weight: bolder;
+            font-size: large;
+            font-variant: small-caps;
+            color: black;
+        }
+        
+        .div-letra-2 {
+            font-size: medium;
+            color: rgb(134, 133, 133);
+        }
+        
+        ion-searchbar {
+            --icon-color: var(--ion-color-warning);
+            --box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+             ::ng-deep {
+                .searchbar-input-container {
+                    .searchbar-input {
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }

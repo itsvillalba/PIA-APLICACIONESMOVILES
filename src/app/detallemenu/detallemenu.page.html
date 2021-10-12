@@ -1,0 +1,73 @@
+<ion-header color="#e7c450 ">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button fill="clear " defaultHref="/menu"></ion-back-button>
+        </ion-buttons>
+        <h2 class="div-letra" align-center>                   {{menu.nombre}}</h2>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-img [src]="menu.imagen"></ion-img>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item>
+                        <br>
+                        <ion-item>
+                            <ion-label>Ingrediente</ion-label>
+                            <ion-select (ionChange)="changeSelect($event)" value="" okText="Aceptar" cancelText="Volver" placeholder="Seleccionar">
+                                <ion-select-option value="{{ingrediente}}" *ngFor="let ingrediente of menu.ingredientes">{{ingrediente}}</ion-select-option>
+                            </ion-select>
+                            <ion-button color="medium" shape="round" (click)="restarelemento()" disabled={{buttonDisabled}}>-</ion-button>
+                            <ion-button color="medium" shape="round" (click)="sumarElemento()">+</ion-button>
+                        </ion-item>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Dirección</ion-label>
+                        <ion-input name="direccion"> </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Nombre de quien recibe</ion-label>
+                        <ion-input name="direccion"> </ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+
+
+
+        <ion-card class="ion-text-center">
+            <ion-card-content>
+                <p>Elementos seleccionados:</p>
+                <ion-row>
+                    <ion-col align-center>
+                        <h3>{{optionSelected}}: {{sumaElemento}} </h3>
+
+                        <h3>Pago total: $ {{pagoTotal}} mxn</h3>
+
+                        <ion-list>
+                            <ion-button color="medium" shape="round" (click)="  addElement()">
+                                Agregar
+                            </ion-button>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+
+
+        <ion-button color="danger" shape="round" (click)="deleteElement()"> Eliminar</ion-button>
+
+        <ion-button color="dark" shape="round" (click)=" getContactList()"></ion-button>
+
+    </ion-grid>
+</ion-content>

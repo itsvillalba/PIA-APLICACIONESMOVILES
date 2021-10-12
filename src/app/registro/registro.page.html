@@ -1,0 +1,66 @@
+<ion-header [translucent]="false" class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button fill="clear">
+            </ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-toolbar>
+        <div class="ion-text-center">
+            <ion-text color="warning">
+                <ion-img src="assets/img/logo.png" style="height: 110px "></ion-img>
+            </ion-text>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <br>
+    <br>
+    <br>
+
+    <ion-card class="ion-text-center">
+        <ion-card-header>
+            <ion-card-title>SIGN UP</ion-card-title>
+            <ion-card-title class="color">Regístrese para continuar</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+
+
+            <ion-item>
+                <ion-label position="floating">Correo electrónico</ion-label>
+                <ion-input [(ngModel)]="email" name="email"> </ion-input>
+            </ion-item>
+
+
+
+            <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input #passwordEyeRegister name="password" [(ngModel)]="password" [type]="passwordTypeInput"></ion-input>
+
+                <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+                        <ion-icon  [name]="iconpassword"></ion-icon>
+                    </button>
+
+            </ion-item>
+
+
+
+            <br>
+            <ion-button (click)="OnSubmitRegister()" color="medium" shape="round">
+                SIGN UP
+            </ion-button>
+
+
+
+
+            <br>
+            <ion-button fill="clear" [routerLink]="['/login']">
+                Ya tengo una cuenta
+            </ion-button>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>
