@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'acercade',
     loadChildren: () => import('./acercade/acercade.module').then( m => m.AcercadePageModule)
   },
+  {
+    path: 'googlemaps',
+    loadChildren: () => import('./googlemaps/googlemaps.module').then( m => m.GooglemapsPageModule)
+  },
  
 ];
 

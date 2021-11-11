@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "aplicacion",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "io.ionic.starter",
+  "appName": "iGrub",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }

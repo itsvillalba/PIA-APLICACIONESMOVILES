@@ -3,7 +3,7 @@ export interface Menu {
     nombre: string,
 imagen: string;
     descripcion: string;
-    precio: string;
+    precio: any;
     ingredientes: string[];
     costo: number[];
 }

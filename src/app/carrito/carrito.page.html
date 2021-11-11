@@ -11,9 +11,15 @@
 <ion-content>
     <ion-card class="ion-text-center">
         <ion-grid>
+
             <ion-list>
+
                 <ion-row>
-                    <ion-item *ngFor="let colecciones of productos">
+
+
+                    <ion-item *ngFor="let colecciones of productos; ">
+
+
                         <ion-item>
                             <p>{{colecciones.uid}}</p>
                         </ion-item>
@@ -23,14 +29,43 @@
                             <p>Ingrediente: {{colecciones.ingrediente}}</p>
                         </ion-col>
                         <ion-col>
-                            <p>Costo: $ x</p>
+                            <p>Costo: ${{colecciones.pago}} x {{colecciones.cantidad}}</p>
+
                         </ion-col>
+
                     </ion-item>
+
                 </ion-row>
+
             </ion-list>
         </ion-grid>
         <ion-col>
-            <ion-button color="danger" shape="round"> Eliminar</ion-button>
+
+            <ion-item *ngFor="let colecciones of productos | slice:0:1">
+                <p color="dark">Nombre de quien recibe: {{colecciones.recepcion}}</p>
+            </ion-item>
+
+            <ion-item (click)="addDirection()">
+                <ion-label class="normal">Ubicación</ion-label>
+                <ion-buttons>
+                    <ion-button>
+                        <ion-icon slot="icon-only" color="danger" name="location"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-item>
+            <!--
+            <ion-item *ngFor="let doc of docs">
+                <p>{{doc.id}}</p>
+                <ion-buttons fill="clear">
+                    <ion-button (click)="eliminarDocumento(doc.id)">
+                        <ion-icon fill="clear" name="trash-bin" color="danger"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </ion-item>
+        -->
+            <p>{{longitud}}</p>
+            <p>{{latitud}}</p>
+
             <ion-button color="warning" shape="round" (click)="getOrdenes()">Pagar</ion-button>
         </ion-col>
     </ion-card>

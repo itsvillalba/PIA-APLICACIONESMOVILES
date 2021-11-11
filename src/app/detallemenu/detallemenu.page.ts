@@ -4,7 +4,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 import {Menu} from '../menu/menu.model'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '../servicios/auth.service';
-
+import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detallemenu',
@@ -13,6 +14,10 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class DetallemenuPage implements OnInit {
 
+  latitud: number;
+  longitud: number;
+  
+  
   idNegocio: number;
   menu: Menu;
   event: CustomEvent
@@ -25,10 +30,13 @@ export class DetallemenuPage implements OnInit {
   buttonDisabled: boolean = true;
   buttonPlusDisabled: boolean = true;
   contactList: any[];
+  precioFinal: any;
+  recibe: string;
  
   constructor(private menuService: MenuService,
     private router: Router, private activateRouter: ActivatedRoute,
     private firestore: AngularFirestore, private authservice: AuthService,
+    private modalController: ModalController
     ) { 
       
     }
@@ -38,6 +46,7 @@ export class DetallemenuPage implements OnInit {
 /*por medio de user.id obtendo el id desde auth service/getuserAuth*/
     this.authservice.getUserAuth().subscribe(user => {
        this.usuario = user.uid
+     
     })
 
     this.activateRouter.paramMap.subscribe(paramMap=>{
@@ -51,22 +60,23 @@ export class DetallemenuPage implements OnInit {
     this.optionSelected = event.detail.value;
     console.log(event.detail.value);
     this.sumaElemento = 1;
-    this.pagoTotal = this.costo * 1;
+    this.pagoTotal = this.menu.precio;
+   
   }
-  
+  /***********/
  
  
   sumarElemento()
   { 
       this.sumaElemento++;
-      this.pagoTotal = this.costo*this.sumaElemento;
+      this.pagoTotal = this.menu.precio*this.sumaElemento;
       this.buttonDisabled = false;
   }
  
   restarelemento(){
      
       this.sumaElemento--;
-      this.pagoTotal = this.costo*this.sumaElemento;
+      this.pagoTotal = this.menu.precio *this.sumaElemento;
       if(this.sumaElemento == 0)
       {
         this.buttonDisabled = true;
@@ -80,18 +90,23 @@ export class DetallemenuPage implements OnInit {
     this.firestore.collection('registroCompra').doc(this.usuario).set(opcionSeleccionada);
     */
 
-    const opcionSeleccionada =  {ingrediente: this.optionSelected, UID: this.usuario}
+    const opcionSeleccionada =  {ingrediente: this.optionSelected, UID: this.usuario, imagen: this.menu.imagen,
+      pago: this.pagoTotal, cantidad: this.sumaElemento,
+    recepcion: this.recibe}
     this.firestore.collection('registroCompra').add(opcionSeleccionada)
   }  
 
   deleteElement(){
     const opcionSeleccionada = {ingrediente: this.optionSelected, UID: this.usuario}
-    this.firestore.collection('registroCompra').doc( this.usuario).delete()
+    this.firestore.collection('registroCompra').doc(this.usuario).ref.delete()
   }
 
   getContactList() {
  console.log(this.firestore.collection('registroCompra').doc(this.usuario).get());
   }
+  
+
+
   
 
 

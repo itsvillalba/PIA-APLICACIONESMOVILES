@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,17 @@ export class CarritoService {
     this.firestore.collection<tipo>(path
       , ref => ref.where(parametro, '==', value));
       return dataCollection.valueChanges();
+  }
+
+
+  deleteDoc(path:string, id: string)
+  {
+    const collection = this.firestore.collection(path);
+    return collection.doc(id).delete();
+  }
+
+  getDocs() {
+    return this.firestore.collection('registroCompra').snapshotChanges();
   }
 
 }

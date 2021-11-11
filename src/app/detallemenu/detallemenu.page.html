@@ -23,7 +23,7 @@
                         <br>
                         <ion-item>
                             <ion-label>Ingrediente</ion-label>
-                            <ion-select (ionChange)="changeSelect($event)" value="" okText="Aceptar" cancelText="Volver" placeholder="Seleccionar">
+                            <ion-select [(ngModel)]="optionSelected" (ionChange)="changeSelect(event)" value="" okText="Aceptar" cancelText="Volver" placeholder="Seleccionar">
                                 <ion-select-option value="{{ingrediente}}" *ngFor="let ingrediente of menu.ingredientes">{{ingrediente}}</ion-select-option>
                             </ion-select>
                             <ion-button color="medium" shape="round" (click)="restarelemento()" disabled={{buttonDisabled}}>-</ion-button>
@@ -36,7 +36,7 @@
                     </ion-item>
                     <ion-item>
                         <ion-label position="floating">Nombre de quien recibe</ion-label>
-                        <ion-input name="direccion"> </ion-input>
+                        <ion-input [(ngModel)]="recibe" name="direccion"> </ion-input>
                     </ion-item>
                 </ion-list>
             </ion-col>
@@ -47,10 +47,11 @@
 
         <ion-card class="ion-text-center">
             <ion-card-content>
-                <p>Elementos seleccionados:</p>
+                <h2>Elementos seleccionados</h2>
                 <ion-row>
                     <ion-col align-center>
-                        <h3>{{optionSelected}}: {{sumaElemento}} </h3>
+                        <h3>Tipo: {{optionSelected}}</h3>
+                        <h3>cantidad: {{sumaElemento}} </h3>
 
                         <h3>Pago total: $ {{pagoTotal}} mxn</h3>
 
@@ -65,9 +66,8 @@
         </ion-card>
 
 
-        <ion-button color="danger" shape="round" (click)="deleteElement()"> Eliminar</ion-button>
 
-        <ion-button color="dark" shape="round" (click)=" getContactList()"></ion-button>
+
 
     </ion-grid>
 </ion-content>
